@@ -6,14 +6,18 @@ import { Input } from "./ui/input";
 import { logIn, signUp } from "@/actions/actions";
 
 import AuthButton from "./AuthButton";
+import { Button } from "./ui/button";
+import { set } from "zod";
 type TAuthForm = {
   actionType: "signup" | "login";
 };
 
 export default function AuthForm({ actionType }: TAuthForm) {
+  const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setPending(true);
     const formData = new FormData(e.currentTarget);
 
     if (actionType === "signup") {
@@ -30,6 +34,7 @@ export default function AuthForm({ actionType }: TAuthForm) {
     if (error) {
       console.log(error);
     }
+    setPending(false);
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -47,7 +52,9 @@ export default function AuthForm({ actionType }: TAuthForm) {
           minLength={6}
         />
       </div>
-      <AuthButton actionType={actionType} />
+      <Button disabled={pending}>
+        {actionType === "login" ? "Log In" : "Sign up"}
+      </Button>
       {error && <p className="text-red-500 mt-2 text-sm">{error}</p>}
     </form>
   );
