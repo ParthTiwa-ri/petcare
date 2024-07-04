@@ -4,7 +4,7 @@ import prisma from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { Pet, Prisma } from "@prisma/client";
 import { authSchema, petFormSchema, petIdSchema } from "@/lib/validation";
-import { auth, signIn, signOut } from "@/lib/auth";
+import { auth, signIn, signOut } from "@/lib/auth-no-edge";
 import bcryt from "bcryptjs";
 import { redirect } from "next/navigation";
 
