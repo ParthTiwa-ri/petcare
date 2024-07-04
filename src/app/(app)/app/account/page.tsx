@@ -1,7 +1,7 @@
 import ContentBlock from "@/components/ContentBlock";
 import H1 from "@/components/H1";
 import React from "react";
-import { auth } from "@/lib/auth";
+import { auth } from "@/lib/auth-no-edge";
 import { redirect } from "next/navigation";
 import SignOutBtn from "@/components/SignOutBtn";
 

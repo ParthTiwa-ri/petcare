@@ -6,7 +6,6 @@ import PetList from "@/components/PetList";
 import SearchForm from "@/components/SearchForm";
 
 import Stats from "@/components/Stats";
-import { PlusIcon } from "@radix-ui/react-icons";
 
 export default async function page() {
   return (
