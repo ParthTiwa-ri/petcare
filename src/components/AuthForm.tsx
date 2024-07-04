@@ -46,7 +46,7 @@ export default function AuthForm({ actionType }: TAuthForm) {
           type="email"
           required
           maxLength={100}
-          defaultValue="example@gmail.com"
+          defaultValue={actionType === "login" ? "example@gmail.com" : ""}
         />
       </div>
       <div className="mb-4 space-y-1 mt-2">
@@ -57,7 +57,7 @@ export default function AuthForm({ actionType }: TAuthForm) {
           type="password"
           required
           minLength={6}
-          defaultValue="example"
+          defaultValue={actionType === "login" ? "example" : ""}
         />
       </div>
       <Button disabled={pending}>
