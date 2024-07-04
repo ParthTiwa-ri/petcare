@@ -40,7 +40,14 @@ export default function AuthForm({ actionType }: TAuthForm) {
     <form onSubmit={handleSubmit}>
       <div className="space-y-1">
         <Label htmlFor="email">Email</Label>
-        <Input id="email" name="email" type="email" required maxLength={100} />
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          required
+          maxLength={100}
+          defaultValue="example@gmail.com"
+        />
       </div>
       <div className="mb-4 space-y-1 mt-2">
         <Label htmlFor="password">Password</Label>
@@ -50,6 +57,7 @@ export default function AuthForm({ actionType }: TAuthForm) {
           type="password"
           required
           minLength={6}
+          defaultValue="example"
         />
       </div>
       <Button disabled={pending}>
