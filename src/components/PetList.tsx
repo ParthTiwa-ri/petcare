@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 import petPlaceholder from "../../public/images/pet-placeholder.png";
 import Image from "next/image";
-import { Pet } from "@/lib/types";
+
 import { petContext } from "@/context/petContext";
 import { usePetContext, useSearchContext } from "@/lib/hooks";
 import { cn } from "@/lib/utils";
