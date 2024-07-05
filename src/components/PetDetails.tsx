@@ -3,8 +3,10 @@ import { usePetContext } from "@/lib/hooks";
 
 import Image from "next/image";
 import PetButton from "./PetButton";
-import { useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { Pet } from "@prisma/client";
+import { run } from "@/lib/gemini-api";
+import logo from "../../public/images/google-gemini-icon.svg";
 
 export default function PetDetails() {
   const { selectedPet } = usePetContext();
@@ -83,9 +85,35 @@ function OtherInfo({ pet }: PetProps) {
 }
 
 function PetNotes({ pet }: PetProps) {
+  useEffect(() => {
+    const aiRun = async () => {
+      const text = await run(pet?.name, pet?.age, pet?.ownerName, pet?.notes);
+      setAiSummary(text);
+    };
+    aiRun();
+    return () => {
+      setAiSummary(null);
+    };
+  }, [pet?.name, pet?.age, pet?.ownerName, pet?.notes]);
+  const [aiSummary, setAiSummary] = useState<string | null>(null);
   return (
-    <section className="bg-white px-7 py-5 border border-light flex-1 mb-9 mx-8">
+    <section className="bg-white relative px-7 py-5 border border-light flex-1 mb-9 mx-8">
       {pet?.notes}
+      {aiSummary && (
+        <div className="absolute flex flex-col items-center rounded-md bottom-1 right-1 p-4 bg-slate-200 w-1/2 ">
+          <div className="flex gap-2 items-center justify-center text-lg">
+            <Image
+              src={logo}
+              height={2}
+              width={2}
+              alt="Gemini Logo"
+              className="h-5 w-5 inline-block"
+            />
+            AI Suggestion
+          </div>
+          {aiSummary}
+        </div>
+      )}
     </section>
   );
 }

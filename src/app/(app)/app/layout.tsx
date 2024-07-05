@@ -22,6 +22,7 @@ export default async function layout({
       userId: session.user.id,
     },
   });
+
   return (
     <>
       <BackgroundPattern />
