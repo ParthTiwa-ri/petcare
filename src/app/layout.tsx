@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Pet Care",
   description: "Pet care for personlized pet-care for customers's pet.",
-  metadataBase: new URL("petcare.parthtiwari.in"),
+  metadataBase: new URL("https://petcare.parthtiwari.in/"),
 };
 
 export default function RootLayout({
