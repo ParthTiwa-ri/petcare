@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="bg-[#5DC9A8] min-h-screen flex xl:flex-row flex-col items-center justify-center gap-10">
+    <main className="bg-[#5DC9A8] p-10 min-h-screen flex xl:flex-row  flex-col items-center justify-center gap-10">
       <Image src={previewImage} quality={40} alt="previewImage" />
       <div>
         <Logo />
