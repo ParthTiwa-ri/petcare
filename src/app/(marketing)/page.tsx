@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="bg-[#5DC9A8] min-h-screen flex xl:flex-row flex-col items-center justify-center gap-10">
-      <Image src={previewImage} alt="previewImage" />
+      <Image src={previewImage} quality={40} alt="previewImage" />
       <div>
         <Logo />
         <h1 className="text-5xl font-semibold max-w-[500px] my-6 ">
