@@ -13,7 +13,7 @@ export async function run(
   // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-  const prompt1 = `give personalized advice in 1 and half line for pet care for a pet named ${name} who is ${age} years old, owned by ${ownerName}. ${notes}`;
+  const prompt1 = `give personalized advice in 1 and half line(use emojis where suitable) for pet care for a pet named ${name} who is ${age} years old, owned by ${ownerName}. ${notes}`;
 
   const result = await model.generateContent(prompt1);
   const response = await result.response;
